@@ -1,6 +1,6 @@
 package com.ista.isp.assessment.todo.cache;
 
-import com.ista.isp.assessment.todo.dtos.TodoDto;
+import com.ista.isp.assessment.todo.model.Todo;
 import lombok.Getter;
 import org.springframework.stereotype.Component;
 import java.util.Arrays;
@@ -14,22 +14,22 @@ import java.util.stream.Collectors;
 @Getter
 public class TodoCache {
 
-    private static final Set<TodoDto> data;
+    private static final Set<Todo> data;
 
     static {
 
-        TodoDto todoRunning = TodoDto.builder()
+        Todo todoRunning = Todo.builder()
                 .id(1)
                 .title("Make your daily training").build();
-        TodoDto todoEnglish = TodoDto.builder()
+        Todo todoEnglish = Todo.builder()
                 .id(2)
                 .title("Improve my english").build();
-        TodoDto todoDog = TodoDto.builder()
+        Todo todoDog = Todo.builder()
                 .id(3)
                 .title("Take the dog for a walk").build();
 
         data = Collections.synchronizedSet(new HashSet<>(
-                Arrays.stream(new TodoDto[]{todoRunning, todoEnglish, todoDog}).collect(Collectors.toSet())));
+                Arrays.stream(new Todo[]{todoRunning, todoEnglish, todoDog}).collect(Collectors.toSet())));
     }
 
     private static final AtomicInteger sequence = new AtomicInteger(data.size()+1);
@@ -38,7 +38,7 @@ public class TodoCache {
         return sequence.getAndIncrement();
     }
 
-    public Set<TodoDto> getData() {
+    public Set<Todo> getData() {
         return data;
     }
 

@@ -1,10 +1,12 @@
-package com.ista.isp.assessment.todo.controllers;
+package com.ista.isp.assessment.todo.controller;
 
-import com.ista.isp.assessment.todo.dtos.TodoDto;
-import com.ista.isp.assessment.todo.services.ITodoService;
+import com.ista.isp.assessment.todo.model.Todo;
+import com.ista.isp.assessment.todo.service.ITodoService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
+import javax.validation.constraints.Min;
 
+import javax.validation.Valid;
 import java.util.Set;
 
 @RestController
@@ -16,20 +18,20 @@ public class TodoController {
 
     @GetMapping
     @ResponseBody
-    public Set<TodoDto> getAll() {
+    public Set<Todo> getAll() {
         return this.todoService.getAll();
     }
 
     @PostMapping
     @ResponseBody
-    public TodoDto add(@RequestBody TodoDto todo) {
+    public Todo add(@Valid @RequestBody Todo todo) {
         return this.todoService.add(todo);
     }
 
 
     @DeleteMapping("/{id}")
     @ResponseBody
-    public void delete(@PathVariable Integer id) {
+    public void delete(@PathVariable @Min(1) Integer id) {
          this.todoService.delete(id);
     }
 

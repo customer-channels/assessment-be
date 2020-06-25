@@ -1,11 +1,10 @@
-package com.ista.isp.assessment.todo.daos;
+package com.ista.isp.assessment.todo.dao;
 
 import com.ista.isp.assessment.todo.cache.TodoCache;
-import com.ista.isp.assessment.todo.dtos.TodoDto;
+import com.ista.isp.assessment.todo.model.Todo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
-import java.util.List;
 import java.util.Set;
 
 @Repository
@@ -14,16 +13,16 @@ public class TodoDao {
     @Autowired
     private TodoCache cache;
 
-    public Set<TodoDto> getAll() {
+    public Set<Todo> getAll() {
         return this.cache.getData();
     }
 
-    public TodoDto add(TodoDto todo) {
+    public Todo add(Todo todo) {
         this.cache.getData().add(todo);
         return todo;
     }
 
-    public void delete(TodoDto todo) {
+    public void delete(Todo todo) {
         this.cache.getData().remove(todo);
     }
 
