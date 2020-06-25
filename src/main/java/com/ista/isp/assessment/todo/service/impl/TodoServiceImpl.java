@@ -1,6 +1,7 @@
 package com.ista.isp.assessment.todo.service.impl;
 
 import com.ista.isp.assessment.todo.dao.TodoDao;
+import com.ista.isp.assessment.todo.exception.TodoAlreadyPresentException;
 import com.ista.isp.assessment.todo.model.Todo;
 import com.ista.isp.assessment.todo.service.ITodoService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -18,13 +19,19 @@ public class TodoServiceImpl implements ITodoService {
             return this.todoDao.getAll();
         }
 
-        public Todo add(Todo addedTodo) {
-            int id = todoDao.getAll().size();
-            addedTodo.setId(todoDao.getId());
-            return todoDao.add(addedTodo);
+        public synchronized Todo add(Todo addedTodo) {
+
+            if (todoDao.getAll().stream().anyMatch(
+                    todo -> todo.getTitle().equals(addedTodo.getTitle()))){
+                throw new TodoAlreadyPresentException(addedTodo.getTitle());
+            } else {
+                addedTodo.setId(todoDao.getId());
+                return todoDao.add(addedTodo);
+            }
+
         }
 
-        public void delete(Integer todoId) {
+        public synchronized void delete(Integer todoId) {
             Todo todoToDelete = todoDao.getAll().stream().filter(
                     todo -> todo.getId().equals(todoId)).findFirst().get();
             this.todoDao.delete(todoToDelete);
