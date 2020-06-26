@@ -11,7 +11,6 @@ import java.util.concurrent.atomic.AtomicInteger;
 import java.util.stream.Collectors;
 
 @Component
-@Getter
 public class TodoCache {
 
     private static final Set<Todo> data;
@@ -34,11 +33,12 @@ public class TodoCache {
 
     private static final AtomicInteger sequence = new AtomicInteger(data.size()+1);
 
-    public static int generate(){
+
+    public static synchronized int generate() {
         return sequence.getAndIncrement();
     }
 
-    public Set<Todo> getData() {
+    public synchronized Set<Todo> getData() {
         return data;
     }
 

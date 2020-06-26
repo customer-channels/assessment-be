@@ -40,4 +40,12 @@ public class GlobalControllerExceptionHandler extends ResponseEntityExceptionHan
     }
 
 
+    @ResponseStatus(HttpStatus.NOT_FOUND)
+    @ExceptionHandler({TodoNotFoundException.class})
+    @ResponseBody
+    ResponseEntity<Object> handleTodoNotFoundException(final Exception exception) {
+        return new ResponseEntity<>(exception.getMessage(), null, HttpStatus.NOT_FOUND);
+    }
+
+
 }

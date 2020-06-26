@@ -2,11 +2,13 @@ package com.ista.isp.assessment.todo.service.impl;
 
 import com.ista.isp.assessment.todo.dao.TodoDao;
 import com.ista.isp.assessment.todo.exception.TodoAlreadyPresentException;
+import com.ista.isp.assessment.todo.exception.TodoNotFoundException;
 import com.ista.isp.assessment.todo.model.Todo;
 import com.ista.isp.assessment.todo.service.ITodoService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.Optional;
 import java.util.Set;
 
 @Service
@@ -19,7 +21,7 @@ public class TodoServiceImpl implements ITodoService {
             return this.todoDao.getAll();
         }
 
-        public synchronized Todo add(Todo addedTodo) {
+        public Todo add(Todo addedTodo) {
 
             if (todoDao.getAll().stream().anyMatch(
                     todo -> todo.getTitle().equals(addedTodo.getTitle()))){
@@ -31,10 +33,17 @@ public class TodoServiceImpl implements ITodoService {
 
         }
 
-        public synchronized void delete(Integer todoId) {
-            Todo todoToDelete = todoDao.getAll().stream().filter(
-                    todo -> todo.getId().equals(todoId)).findFirst().get();
-            this.todoDao.delete(todoToDelete);
+        public void delete(Integer todoId) {
+
+            Optional<Todo> todoToDelete = todoDao.getAll().stream().filter(
+                    todo -> todo.getId().equals(todoId)).findFirst();
+
+            if (todoToDelete.isPresent()){
+                this.todoDao.delete(todoToDelete.get());
+            } else {
+                throw new TodoNotFoundException(String.valueOf(todoId));
+            }
+
         }
 
 
