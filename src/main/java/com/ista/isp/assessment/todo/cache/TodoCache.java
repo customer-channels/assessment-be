@@ -31,10 +31,10 @@ public class TodoCache {
                 Arrays.stream(new Todo[]{todoRunning, todoEnglish, todoDog}).collect(Collectors.toSet())));
     }
 
-    private static final AtomicInteger sequence = new AtomicInteger(data.size()+1);
+    private final AtomicInteger sequence = new AtomicInteger(data.size()+1);
 
 
-    public static synchronized int generate() {
+    public synchronized int generate() {
         return sequence.getAndIncrement();
     }
 

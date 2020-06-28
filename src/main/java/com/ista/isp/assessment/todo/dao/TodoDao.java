@@ -27,7 +27,7 @@ public class TodoDao {
     }
 
     public int getId() {
-        return TodoCache.generate();
+        return this.cache.generate();
     }
 
 }
