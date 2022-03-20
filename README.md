@@ -18,3 +18,10 @@ Service listens on http://localhost:8080
 `./mvnw clean package`
 
 Resulting JAR package can be found in `./target`.
+
+## Documentation
+
+Once application is started locally, all the available actions of this API are documented here:
+
+http://localhost:8080/swagger-ui.html
+
