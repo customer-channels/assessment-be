@@ -52,9 +52,15 @@ class TodoApplicationTests {
 	@Test
 	@Order(2)
 	void getListItemsTest() {
+		
 		ItemController itemController = createItemController();		
+		
 		ResponseEntity<List<Item>> response = itemController.listItems();
+		
+		// I compare if all items are in the response
 		assertArrayEquals(new Item[] {item1,item2,item3,item4} , response.getBody().toArray());
+		
+		// I check also status response
 		assertEquals(response.getStatusCode(), HttpStatus.OK);
 	}
 	
@@ -69,10 +75,19 @@ class TodoApplicationTests {
 	@Test
 	@Order(4)
 	void updateItemTest() {
+		
 		ItemController itemController = createItemController();
+		
+		// I modify an item
 		item1.setTitle("Updated Item");
+		
+		// I change item 1 on database
 		itemController.updateItem(item1,1);
+		
+		// I get the item 1 from database
 		Item updatedItem = itemController.getItem(1).getBody();
+		
+		// I compare if the item from database is the same as the modified item
 		assertEquals(item1, updatedItem);
 	}
 
