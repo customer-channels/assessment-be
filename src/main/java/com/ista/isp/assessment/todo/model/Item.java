@@ -13,6 +13,7 @@ import lombok.Data;
 
 /**
  * @author Fernando Moreno Ruiz
+ * It represent an Item of a Todolist. 
  * */
 @Data
 @Entity
