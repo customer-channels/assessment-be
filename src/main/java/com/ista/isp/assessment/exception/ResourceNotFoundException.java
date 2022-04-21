@@ -1,4 +1,4 @@
-package com.ista.isp.assessment.todo.exception;
+package com.ista.isp.assessment.exception;
 
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.ResponseStatus;

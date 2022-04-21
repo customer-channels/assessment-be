@@ -1,10 +1,10 @@
-package com.ista.isp.assessment.todo.service;
+package com.ista.isp.assessment.service;
 
 import java.util.List;
 
 import org.springframework.stereotype.Service;
 
-import com.ista.isp.assessment.todo.model.Item;
+import com.ista.isp.assessment.model.Item;
 
 @Service
 public interface ItemService {

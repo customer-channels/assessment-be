@@ -1,4 +1,4 @@
-package com.ista.isp.assessment.todo.controller;
+package com.ista.isp.assessment.controller;
 
 import java.util.List;
 
@@ -13,8 +13,8 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.ista.isp.assessment.todo.model.Item;
-import com.ista.isp.assessment.todo.service.ItemService;
+import com.ista.isp.assessment.model.Item;
+import com.ista.isp.assessment.service.ItemService;
 
 /**
  * @author Fernando Moreno Ruiz

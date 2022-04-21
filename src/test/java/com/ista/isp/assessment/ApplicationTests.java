@@ -1,4 +1,4 @@
-package com.ista.isp.assessment.todo;
+package com.ista.isp.assessment;
 
 import static org.junit.jupiter.api.Assertions.assertArrayEquals;
 import static org.junit.jupiter.api.Assertions.assertEquals;
@@ -14,17 +14,17 @@ import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 
-import com.ista.isp.assessment.todo.controller.ItemController;
-import com.ista.isp.assessment.todo.model.Item;
-import com.ista.isp.assessment.todo.repository.ItemRepository;
-import com.ista.isp.assessment.todo.service.impl.ItemServiceImpl;
+import com.ista.isp.assessment.controller.ItemController;
+import com.ista.isp.assessment.model.Item;
+import com.ista.isp.assessment.repository.ItemRepository;
+import com.ista.isp.assessment.service.impl.ItemServiceImpl;
 
 /**
  * @author Fernando Moreno Ruiz
  * */
 @SpringBootTest
 @TestMethodOrder(OrderAnnotation.class)
-class TodoApplicationTests {
+class ApplicationTests {
 
 	@Autowired
 	ItemRepository itemRepository;

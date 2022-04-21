@@ -1,13 +1,13 @@
-package com.ista.isp.assessment.todo.service.impl;
+package com.ista.isp.assessment.service.impl;
 
 import java.util.List;
 
 import org.springframework.stereotype.Service;
 
-import com.ista.isp.assessment.todo.exception.ResourceNotFoundException;
-import com.ista.isp.assessment.todo.model.Item;
-import com.ista.isp.assessment.todo.repository.ItemRepository;
-import com.ista.isp.assessment.todo.service.ItemService;
+import com.ista.isp.assessment.exception.ResourceNotFoundException;
+import com.ista.isp.assessment.model.Item;
+import com.ista.isp.assessment.repository.ItemRepository;
+import com.ista.isp.assessment.service.ItemService;
 
 /**
  * @author Fernando Moreno Ruiz

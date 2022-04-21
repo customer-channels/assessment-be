@@ -1,4 +1,4 @@
-package com.ista.isp.assessment.todo.model;
+package com.ista.isp.assessment.model;
 
 import java.util.Objects;
 
