@@ -17,6 +17,7 @@ import org.springframework.http.ResponseEntity;
 import com.ista.isp.assessment.controller.ItemController;
 import com.ista.isp.assessment.model.Item;
 import com.ista.isp.assessment.repository.ItemRepository;
+import com.ista.isp.assessment.service.ItemService;
 import com.ista.isp.assessment.service.impl.ItemServiceImpl;
 
 /**
@@ -27,7 +28,7 @@ import com.ista.isp.assessment.service.impl.ItemServiceImpl;
 class ApplicationTests {
 
 	@Autowired
-	ItemRepository itemRepository;
+	ItemService itemService;
 	
 	
 	private Item item1 = new Item(1,"Test getItems","Debo crear el test para el getItems",true);
@@ -36,7 +37,7 @@ class ApplicationTests {
 	private Item item4 = new Item(4,"Test updateItem","Debo crear el test para el updateItem",false);
 	
 	private ItemController createItemController() {
-		return new ItemController(new ItemServiceImpl(itemRepository));
+		return new ItemController(itemService);
 	}
 	
 	@Test
