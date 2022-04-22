@@ -2,6 +2,7 @@ package com.ista.isp.assessment.service.impl;
 
 import java.util.List;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.ista.isp.assessment.exception.ResourceNotFoundException;
@@ -15,13 +16,10 @@ import com.ista.isp.assessment.service.ItemService;
 @Service
 public class ItemServiceImpl implements ItemService {
 	
+	@Autowired
 	private ItemRepository itemRepository;
 	
-	public ItemServiceImpl(ItemRepository itemRepository) {
-		super();
-		this.itemRepository = itemRepository;
-	}
-
+	
 	public Item saveItem(Item item) {				
 		return itemRepository.save(item);
 	}
